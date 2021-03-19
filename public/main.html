@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shoppers</title>
+    <link rel="icon" type="image/png" href="/imgs/favicon.png" sizes="16x16"/>
+
+    <!-- Import lib -->
+	<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"> -->
+	<link rel="stylesheet" type="text/css" href="/css/fontawesome-free/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	<!-- End import lib -->
+
+	<!-- Import Styles -->
+    <link rel="stylesheet" href="/css/style.css">
+	<!-- End import Styles -->
+
+	<!-- Import JS -->
+    <script src="/js/sweetalert.min.js"></script>
+    <script src="/js/Cookies.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/init.js"></script>
+	<!-- End import JS -->
+
+</head>
+<body id="htmlBody" class="overlay-scrollbar">
+    <!-- navbar -->
+	<div class="navbar">
+		<!-- nav left -->
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link">
+					<i class="fas fa-bars" id="menuToggler"></i>
+				</a>
+			</li>
+			<li class="nav-item">
+				<img src="/imgs/favicon-light.png" alt="Shoppers logo" class="logo logo-light">
+				<img src="/imgs/favicon-dark.png" alt="Shoppers logo" class="logo logo-dark">
+			</li>
+		</ul>
+		<!-- end nav left -->
+		<!-- form -->
+		<form class="navbar-search">
+			<input type="text" name="Search" class="navbar-search-input" placeholder="What you looking for...">
+			<i class="fas fa-search"></i>
+		</form>
+		<!-- end form -->
+		<!-- nav right -->
+		<ul class="navbar-nav nav-right">
+			<li class="nav-item mode">
+				<a class="nav-link" id="themeSwitcher">
+					<i class="fas fa-moon dark-icon"></i>
+					<i class="fas fa-sun light-icon"></i>
+				</a>
+			</li>
+			<li class="nav-item avt-wrapper">
+				<div class="avt dropdown">
+					<img src="/imgs/img_usr/image001.png" id="userAvatar" alt="User image" class="dropdown-toggle" data-toggle="user-menu">
+					<ul id="user-menu" class="dropdown-menu">
+						<li  class="dropdown-menu-item">
+							<a class="dropdown-menu-link">
+								<div>
+									<i class="fas fa-user-tie"></i>
+								</div>
+								<span>Profile</span>
+							</a>
+						</li>
+						<li class="dropdown-menu-item" hidden> <!-- TODO: Remove hidden and add functionality to settings -->
+							<a href="#" class="dropdown-menu-link">
+								<div>
+									<i class="fas fa-cog"></i>
+								</div>
+								<span>Settings</span>
+							</a>
+						</li>
+						<li  class="dropdown-menu-item">
+							<a id="btnLogout" class="dropdown-menu-link">
+								<div>
+									<i class="fas fa-sign-out-alt"></i>
+								</div>
+								<span>Logout</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+		<!-- end nav right -->
+	</div>
+	<!-- end navbar -->
+	<!-- sidebar -->
+	<div class="sidebar">
+		<ul class="sidebar-nav">
+			<li class="sidebar-nav-item">
+				<a href="/main.html" class="sidebar-nav-link active">
+					<div>
+						<i class="fas fa-tachometer-alt"></i>
+					</div>
+					<span>
+						Dashboard
+					</span>
+				</a>
+			</li>
+			<li class="sidebar-nav-item">
+				<a href="/products.html" class="sidebar-nav-link">
+					<div>
+						<i class="fas fa-boxes"></i>
+					</div>
+					<span>Products</span>
+				</a>
+			</li>
+			<li class="sidebar-nav-item">
+				<a href="/categories.html" class="sidebar-nav-link">
+					<div>
+						<i class="fas fa-th-list"></i>
+					</div>
+					<span>Categories</span>
+				</a>
+			</li>
+			<li class="sidebar-nav-item">
+				<a href="/subcategories.html" class="sidebar-nav-link">
+					<div>
+						<i class="fas fa-stream"></i>
+					</div>
+					<span>Subcategories</span>
+				</a>
+			</li>
+			<li class="sidebar-nav-item">
+				<a href="/attributes.html" class="sidebar-nav-link">
+					<div>
+						<i class="fas fa-tag"></i>
+					</div>
+					<span>Attributes</span>
+				</a>
+			</li>
+			<li class="sidebar-nav-item">
+				<a href="/brands.html" class="sidebar-nav-link">
+					<div>
+						<i class="fab fa-buffer"></i>
+					</div>
+					<span>Brands</span>
+				</a>
+			</li>
+			<li  class="sidebar-nav-item">
+				<a href="/users.html" class="sidebar-nav-link">
+					<div>
+						<i class="fas fa-users"></i>
+					</div>
+					<span>Users</span>
+				</a>
+			</li>
+			<li  class="sidebar-nav-item">
+				<a href="#" class="sidebar-nav-link">
+					<div>
+						<i class="fas fa-shopping-cart"></i>
+					</div>
+					<span>Orders</span>
+				</a>
+			</li>
+			<li  class="sidebar-nav-item">
+				<a href="#" class="sidebar-nav-link">
+					<div>
+						<i class="fas fa-spinner"></i>
+					</div>
+					<span>Promotions</span>
+				</a>
+			</li>
+			<li  class="sidebar-nav-item">
+				<a href="#" class="sidebar-nav-link">
+					<div>
+						<i class="fas fa-audio-description"></i>
+					</div>
+					<span>Advertisements</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<!-- end sidebar -->
+    <!-- main content -->
+    <div class="wrapper">
+        <div class="row">
+			<div class="col-3 col-m-6 col-sm-6">
+				<div class="counter bg-primary">
+					<p>
+						<i class="fas fa-users fas-large"></i>
+					</p>
+					<h3>100+</h3>
+					<p>Employees</p>
+				</div>
+			</div>
+			<div class="col-3 col-m-6 col-sm-6">
+				<div class="counter bg-warning">
+					<p>
+						<i class="fas fa-boxes fas-large"></i>
+					</p>
+					<h3>100+</h3>
+					<p>Products</p>
+				</div>
+			</div>
+			<div class="col-3 col-m-6 col-sm-6">
+				<div class="counter bg-success">
+					<p>
+						<i class="fas fa-shopping-cart fas-large"></i>
+					</p>
+					<h3>100+</h3>
+					<p>Orders</p>
+				</div>
+			</div>
+			<div class="col-3 col-m-6 col-sm-6">
+				<div class="counter bg-danger">
+					<p>
+						<i class="fas fa-hand-holding-usd fas-large"></i>
+					</p>
+					<h3>100+</h3>
+					<p>Revenue</p>
+				</div>
+			</div>
+		</div>
+        <div class="row">
+            <div class="col-8 col-m-12 col-sm-12">
+				<div class="card">
+					<div class="card-header">
+						<h3>
+							Recent Orders
+						</h3>
+						<i class="fas fa-ellipsis-h" style="visibility: hidden;"></i> <!-- TODO: Add functionality then remove hidden -->
+					</div>
+					<div class="card-content">
+						<table>
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Project</th>
+									<th>Manager</th>
+									<th>Status</th>
+									<th>Due date</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td>React</td>
+									<td>Tran Anh Tuat</td>
+									<td>
+										<span class="dot">
+											<i class="bg-success"></i>
+											Completed
+										</span>
+									</td>
+									<td>17/07/2020</td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>Vue</td>
+									<td>Bui Nhu Sang</td>
+									<td>
+										<span class="dot">
+											<i class="bg-warning"></i>
+											In progress
+										</span>
+									</td>
+									<td>18/07/2020</td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>Laravel</td>
+									<td>Phan Nhat Truong</td>
+									<td>
+										<span class="dot">
+											<i class="bg-warning"></i>
+											In progress
+										</span>
+									</td>
+									<td>17/07/2020</td>
+								</tr>
+								<tr>
+									<td>4</td>
+									<td>Django</td>
+									<td>Le Anh Tuan</td>
+									<td>
+										<span class="dot">
+											<i class="bg-danger"></i>
+											Delayed
+										</span>
+									</td>
+									<td>07/07/2020</td>
+								</tr>
+								<tr>
+									<td>5</td>
+									<td>MEAN</td>
+									<td>John Evan</td>
+									<td>
+										<span class="dot">
+											<i class="bg-primary"></i>
+											Pending
+										</span>
+									</td>
+									<td>20/08/2020</td>
+								</tr>
+								<tr>
+									<td>6</td>
+									<td>MERN</td>
+									<td>Robert</td>
+									<td>
+										<span class="dot">
+											<i class="bg-primary"></i>
+											Pending
+										</span>
+									</td>
+									<td>20/08/2020</td>
+								</tr>
+								<tr>
+									<td>7</td>
+									<td>MERN</td>
+									<td>Robert</td>
+									<td>
+										<span class="dot">
+											<i class="bg-primary"></i>
+											Pending
+										</span>
+									</td>
+									<td>20/08/2020</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-4 col-m-12 col-sm-12">
+				<div class="card">
+					<div class="card-header">
+						<h3>
+							Order Progress / Status
+						</h3>
+						<i class="fas fa-ellipsis-h" style="visibility: hidden;"></i> <!-- TODO: Add functionality then remove hidden -->
+					</div>
+					<div class="card-content">
+						<div class="progress-wrapper">
+							<p>
+								Placed
+								<span class="float-right">50%</span>
+							</p>
+							<div class="progress">
+								<div class="bg-success" style="width: 50%"></div>
+							</div>
+						</div>
+						<div class="progress-wrapper">
+							<p>
+								Being Picked
+								<span class="float-right">60%</span>
+							</p>
+							<div class="progress">
+								<div class="bg-primary" style="width:60%"></div>
+							</div>
+						</div>
+						<div class="progress-wrapper">
+							<p>
+								Picked
+								<span class="float-right">40%</span>
+							</p>
+							<div class="progress">
+								<div class="bg-warning" style="width:40%"></div>
+							</div>
+						</div>
+						<div class="progress-wrapper">
+							<p>
+								Being Delivered
+								<span class="float-right">20%</span>
+							</p>
+							<div class="progress">
+								<div class="bg-danger" style="width:20%"></div>
+							</div>
+						</div>
+                        <div class="progress-wrapper">
+							<p>
+								Delivered
+								<span class="float-right">20%</span>
+							</p>
+							<div class="progress">
+								<div class="bg-danger" style="width:20%"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+    <!-- end main content -->
+</body>
+</html>

@@ -1,0 +1,83 @@
+.login-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .form-group {
+    margin: 30px;
+  }
+  
+  .form-control:focus {
+    box-shadow: 0 0 0 0px lightgray;
+    border-color: lightgray;
+  }
+  
+  .input-group-text {
+    background-color: white;
+    border-right: 0px;
+    width: 40px;
+    border-radius: 40px;
+  }
+  
+  .input-group input {
+    border-left: 0px;
+    border-radius: 40px;
+  }
+  
+  .login-button input[type=submit] {
+    border-radius: 40px;
+  }
+  
+  .help-buttons {
+    width: 95%;
+    margin: 0 auto;
+  }
+  
+  .input-group i {
+    color: #c9c9c9;
+  }
+  
+  .input-group-addon {
+    color: black;
+  }
+  
+  .login-form {
+    width: 500px;
+    border-radius: 5px;
+    padding: 30px;
+  }
+  
+  .help-text {
+    font-size: 11px;
+    margin-top: 10px;
+  }
+  
+  .title-text {
+    margin-bottom: 20px;
+  }
+  
+  .form-check-input {
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+
+  .logo {
+    width: 90%;
+    height: 90%;
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .btn-primary {
+      background-color: var(--main-shoppers-color);
+      border: var(--main-shoppers-color);
+      outline: none;
+  }
+
+  .btn-primary:hover {
+      color: var(--main-shoppers-color);
+      background-color: #fff;
+      border: 1px solid var(--main-shoppers-color);
+  }

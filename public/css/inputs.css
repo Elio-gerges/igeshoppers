@@ -1,0 +1,126 @@
+.input-field {
+	position: relative;
+	height: 44px;
+	line-height: 44px;
+	margin: 20px;
+}
+.input-field label {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	color: var(--main-color);
+	transition: 0.2s all;
+	cursor: text;
+}
+
+.input-field input,
+.input-field textarea,
+.input-field input[type=number],
+.input-field select {
+	width: 100%;
+	border: 0;
+	outline: 0;
+	padding: 0.5rem 0;
+	border-bottom: 2px solid var(--main-color);
+	box-shadow: none;
+	color: var(--main-color);
+	background-color: var(--main-bg-color);
+}
+
+.input-field select {
+	width: 100%;
+}
+
+.input-field select[multiple] {
+	/* height: 10px; */
+}
+
+.input-field input:invalid,
+.input-field textarea:invalid,
+.input-field input[type=number]:invalid,
+.input-field select:invalid {
+	outline: 0;
+	/* color: #ff2300;
+	   border-color: #ff2300; */
+}
+
+.input-field option:checked {
+	border-color: var(--main-shoppers-color);
+}
+
+.input-field input:focus,
+.input-field input:valid,
+.input-field input[type=tel]:valid,
+.input-field input[type=number]:valid,
+.input-field input[type=email]:valid,
+.input-field textarea:valid,
+.input-field select:valid {
+	border-color: var(--main-shoppers-color);
+}
+
+.input-field input:focus~label,
+.input-field input:valid~label,
+.input-field input[type=tel]:valid~label,
+.input-field input[type=email]:valid~label,
+.input-field input[type=number]:valid~label,
+.input-field textarea:valid~label,
+.input-field select:valid~label {
+	font-size: 14px;
+	top: -24px;
+	color: var(--main-shoppers-color);
+}
+
+/*input[type=text], 
+input[type=password], 
+input[type=date], 
+input[type=number],
+input[type=tel],
+select,
+textarea {
+     border-radius: 30px; 
+	border-bottom: 1px solid var(--main-color);
+}*/
+
+select,
+input[type=date] {
+    cursor: pointer;
+}
+
+/*input[type=text]:focus,
+input[type=password]:focus,
+input[type=date]:focus,
+input[type=number]:focus,
+input[type=tel]:focus,
+select:focus,
+textarea:focus {
+     border: 1px solid transparent; */
+    /* border-bottom: 2px solid var(--main-shoppers-color); 
+}*/
+
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: var(--main-color);
+    border: none;
+    border-radius: 30px;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+input, textarea, select {
+    outline: none;
+}
+
+input[type=reset] {
+    border: 1px solid var(--main-color);
+    background-color: white;
+    color: var(--main-color);
+}
+
+input[type=reset]:hover {
+    border: 1px solid white;
+    background-color: var(--main-color);
+    color: white;
+}
