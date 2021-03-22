@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ProductActivity">
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/rounded_rect_white"
+        android:clickable="true"
+        android:elevation="10dp"
+        android:gravity="center"
+        android:src="@drawable/ic_arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/prod"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/rounded_rect_white"
+        android:elevation="10dp"
+        android:gravity="center"
+        android:text="Product"
+        android:textAlignment="center"
+        android:textColor="@color/register_bk_color"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toStartOf="@+id/btnShare"
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnShare"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/rounded_rect_white"
+        android:clickable="true"
+        android:elevation="10dp"
+        android:gravity="center"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/ic_share"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgProduct"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="25dp"
+        android:background="@drawable/rounded_rect_white"
+        android:src="@drawable/prod"
+        app:layout_constraintTop_toBottomOf="@+id/prod"
+        />
+
+    <LinearLayout
+        android:id="@+id/brcd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:padding="2dp"
+        app:layout_constraintTop_toBottomOf="@+id/imgProduct">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Barcode:"
+            android:textStyle="italic"
+            android:textAlignment="viewStart"
+            />
+        <TextView
+            android:id="@+id/lblBarcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="123456789"
+            android:textStyle="italic"
+            android:textAlignment="viewStart"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/lblProductName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="Product Name"
+        android:textAlignment="center"
+        android:textColor="@color/register_bk_color"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/brcd"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="15dp"
+        android:background="@drawable/rounded_rect_white"
+        android:gravity="center"
+        android:text="Add To Cart"
+        android:textAlignment="center"
+        android:textColor="@color/register_bk_color"
+        app:layout_constraintTop_toBottomOf="@id/lblProductName"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
