@@ -1,7 +1,6 @@
 package com.shoppers.shoppers.fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,11 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.shoppers.shoppers.R;
-import com.shoppers.shoppers.activities.LoginActivity;
-import com.shoppers.shoppers.activities.SplashActivity;
 import com.shoppers.shoppers.adapters.RecycleViewCategoriesAdapter;
 import com.shoppers.shoppers.adapters.RecycleViewProductAdapter;
 import com.shoppers.shoppers.models.Product;
