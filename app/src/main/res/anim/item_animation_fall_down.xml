@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android">
     <translate
-        android:fromXDelta="-20%"
+        android:fromXDelta="100%"
         android:toXDelta="0"
         android:interpolator="@android:anim/decelerate_interpolator"
         />
@@ -12,10 +12,10 @@
         android:interpolator="@android:anim/decelerate_interpolator"
         />
 
-    <scale
-        android:fromXScale="105%"
-        android:toXScale="100%"
-        android:pivotX="50%"
-        android:interpolator="@android:anim/decelerate_interpolator"
-        />
+<!--    <scale-->
+<!--        android:fromXScale="105%"-->
+<!--        android:toXScale="100%"-->
+<!--        android:pivotX="50%"-->
+<!--        android:interpolator="@android:anim/decelerate_interpolator"-->
+<!--        />-->
 </set>

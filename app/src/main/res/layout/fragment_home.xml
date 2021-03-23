@@ -47,7 +47,6 @@
                         android:clickable="true"
                         />
                 </LinearLayout>
-
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
             <ScrollView
                 android:layout_width="match_parent"
@@ -68,7 +67,6 @@
                         android:layout_marginTop="15dp"
                         android:layout_marginBottom="15dp"
                         android:layout_gravity="center"
-                        android:layoutAnimation="@anim/recycle_layout_animation"
                         />
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -110,7 +108,6 @@
                         android:layout_marginTop="15dp"
                         android:layout_marginBottom="15dp"
                         android:layout_gravity="center"
-                        android:layoutAnimation="@anim/recycle_layout_animation"
                         />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -154,7 +151,6 @@
                         android:layout_marginTop="15dp"
                         android:layout_marginBottom="15dp"
                         android:layout_gravity="center"
-                        android:layoutAnimation="@anim/recycle_layout_animation"
                         />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -197,7 +193,6 @@
                         android:layout_marginTop="15dp"
                         android:layout_marginBottom="15dp"
                         android:layout_gravity="center"
-                        android:layoutAnimation="@anim/recycle_layout_animation"
                         />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -240,7 +235,6 @@
                         android:layout_marginTop="15dp"
                         android:layout_marginBottom="100dp"
                         android:layout_gravity="center"
-                        android:layoutAnimation="@anim/recycle_layout_animation"
                         />
                 </LinearLayout>
             </ScrollView>

@@ -1,23 +1,45 @@
 package com.shoppers.shoppers.fragments;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.media.AudioManager;
+import android.media.ToneGenerator;
 import android.os.Bundle;
 
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
+import android.util.SparseArray;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.SearchView;
+import android.widget.Toast;
 
+import com.google.android.gms.vision.CameraSource;
+import com.google.android.gms.vision.Detector;
+import com.google.android.gms.vision.barcode.Barcode;
+import com.google.android.gms.vision.barcode.BarcodeDetector;
 import com.shoppers.shoppers.R;
+import com.shoppers.shoppers.activities.BarcodeActivity;
+import com.shoppers.shoppers.activities.HomeActivity;
+import com.shoppers.shoppers.activities.ProfileActivity;
 import com.shoppers.shoppers.adapters.RecycleViewCategoriesAdapter;
 import com.shoppers.shoppers.adapters.RecycleViewProductAdapter;
 import com.shoppers.shoppers.models.Product;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -34,6 +56,10 @@ public class HomeFragment extends Fragment {
     private ArrayList<Product> dummyProducts;
 
     private SwipeRefreshLayout swipeRefreshLayout;
+
+    private SearchView searchView;
+
+    private ImageButton scanBarcode;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -58,6 +84,14 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         initRecyclerView(view);
         initProductsLists(view);
+
+        scanBarcode = view.findViewById(R.id.btnSearchByCamera);
+        scanBarcode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mcontext, BarcodeActivity.class));
+            }
+        });
 
         /*
          * Sets up a SwipeRefreshLayout.OnRefreshListener that is invoked when the user
