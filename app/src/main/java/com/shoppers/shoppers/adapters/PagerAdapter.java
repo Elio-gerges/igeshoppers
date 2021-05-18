@@ -32,11 +32,11 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
             case 0:
                 return HomeFragment.newInstance(this.context);
             case 1:
-                return new CartFragment();
-            case 2:
-                return new OrdersFragment();
-            case 3:
-                return new WishlistFragment();
+                return CartFragment.newInstance(this.context);
+//            case 2:
+//                return new OrdersFragment();
+//            case 3:
+//                return new WishlistFragment();
             default:
                 return null;
         }

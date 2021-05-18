@@ -2,7 +2,14 @@
     <string name="app_name">Shoppers</string>
     <string name="login_username_hint">Username</string>
     <string name="login_password_hint">Password</string>
+    <string name="preference_file_key">THISISASECRETKEY</string>
+    <string name="base_url">http://10.0.2.2:3000/api/front/public</string>
+    <string name="base_img_url">http://10.0.2.2:3000/p/img/</string>
+<!--    <string name="base_url">https:/igefypshoppers.herokuapp.com/api/front/public</string>-->
+<!--    <string name="base_img_url">https:/igefypshoppers.herokuapp.com/p/img/</string>-->
+    <string name="auth_token"></string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="more_like_this"><u>More like this</u></string>
+    <string name="map_key">AIzaSyB_qsP8AOP_P0MdlPz-48TDaJYjTP3vbjo</string>
 </resources>

@@ -1,8 +1,10 @@
 package com.shoppers.shoppers.activities;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 
 import com.shoppers.shoppers.R;
 
+import utils.PreferenceUtils;
 import utils.Utilities;
 
 public class SplashActivity extends AppCompatActivity {
@@ -22,6 +25,7 @@ public class SplashActivity extends AppCompatActivity {
     private ImageView imgLogo;
     private TextView lblLogo, lblSlogan;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,9 +68,15 @@ public class SplashActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT)
                             .show();
                 } finally {
-                    Intent i = new Intent(SplashActivity.this, LoginActivity.class);
-                    startActivity(i);
-                    finish();
+                    if(PreferenceUtils.getInstance(getApplicationContext()).getUserID() != null) {
+                        Intent i = new Intent(SplashActivity.this, HomeActivity.class);
+                        startActivity(i);
+                        finish();
+                    } else {
+                        Intent i = new Intent(SplashActivity.this, LoginActivity.class);
+                        startActivity(i);
+                        finish();
+                    }
                 }
             }
         };

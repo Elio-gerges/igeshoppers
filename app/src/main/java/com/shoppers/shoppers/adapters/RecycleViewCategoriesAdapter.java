@@ -1,6 +1,7 @@
 package com.shoppers.shoppers.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,16 +12,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.shoppers.shoppers.R;
+import com.shoppers.shoppers.activities.CategoryActivity;
+import com.shoppers.shoppers.activities.SubcategoryActivity;
+import com.shoppers.shoppers.models.Category;
 
 import java.util.ArrayList;
 
 public class RecycleViewCategoriesAdapter extends RecyclerView.Adapter<RecycleViewCategoriesAdapter.ViewHolder> {
 
     private static final String TAG = "RecycleViewCategoriesAdapter";
-    private ArrayList<String> categories;
+    private ArrayList<Category> categories;
     private Context context;
 
-    public RecycleViewCategoriesAdapter(Context context, ArrayList<String> categories) {
+    public RecycleViewCategoriesAdapter(Context context, ArrayList<Category> categories) {
         this.categories = categories;
         this.context = context;
     }
@@ -36,15 +40,15 @@ public class RecycleViewCategoriesAdapter extends RecyclerView.Adapter<RecycleVi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.lblCategory.setText(this.categories.get(position));
+        holder.lblCategory.setText(this.categories.get(position).getName());
 
         holder.lblCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Intent categoryIntent = new Intent(context, CategoryActivity.class);
-                // categoryIntent.putExtra("Category", categories.get(position));
-                // context.startActivity(categoryIntent);
-                Log.d(TAG, "onClick: Click on " + categories.get(position));
+                 Intent categoryIntent = new Intent(context, CategoryActivity.class);
+                 categoryIntent.putExtra("Category_id", categories.get(position).getId());
+                categoryIntent.putExtra("Category_name", categories.get(position).getName());
+                 context.startActivity(categoryIntent);
             }
         });
     }

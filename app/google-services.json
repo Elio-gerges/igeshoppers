@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "52920051643",
+    "project_id": "igeshoppersapp",
+    "storage_bucket": "igeshoppersapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52920051643:android:db393b8b81417ec497c69e",
+        "android_client_info": {
+          "package_name": "com.shoppers.shoppers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "52920051643-1oipcdf98d0vs1smk05k25njtmh9g9o8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDr8abh_gvzzWh9lO7oE903MdwliJWn1AU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "52920051643-1oipcdf98d0vs1smk05k25njtmh9g9o8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

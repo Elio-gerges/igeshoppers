@@ -11,6 +11,9 @@ import android.widget.ListView;
 
 import com.shoppers.shoppers.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Utilities {
 
     public static void changeStatusBarColor(Window window, Resources resources) {
@@ -41,6 +44,14 @@ public class Utilities {
         params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
         listView.setLayoutParams(params);
         listView.requestLayout();
+    }
+
+    public static double calculatePrice(JSONObject product) throws JSONException {
+        JSONObject inventory = product.getJSONObject("inventory");
+        double price = inventory.getDouble("cost") + (inventory.getDouble("cost") * (inventory.getDouble("vat") /100));
+        price += price * (inventory.getDouble("profit_margin")/100);
+
+        return price;
     }
 
 }

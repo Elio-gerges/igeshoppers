@@ -57,7 +57,7 @@
                 android:layout_height="40dp"
                 android:layout_width="40dp"
                 android:id="@+id/btnProfile"
-                android:src="@drawable/ic_person"
+                android:src="@drawable/e_prof"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:elevation="10dp"
@@ -117,29 +117,29 @@
             app:bt_padding="10dp"
             app:bt_titlePadding="10dp" />
 
-        <com.gauravk.bubblenavigation.BubbleToggleView
-            android:id="@+id/c_item_orders"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:bt_colorActive="@color/register_bk_color"
-            app:bt_colorInactive="#808080"
-            app:bt_icon="@drawable/ic_checklist"
-            app:bt_shape="@drawable/transition_background_drawable_default"
-            app:bt_title="Orders"
-            app:bt_padding="10dp"
-            app:bt_titlePadding="10dp" />
+<!--        <com.gauravk.bubblenavigation.BubbleToggleView-->
+<!--            android:id="@+id/c_item_orders"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:bt_colorActive="@color/register_bk_color"-->
+<!--            app:bt_colorInactive="#808080"-->
+<!--            app:bt_icon="@drawable/ic_checklist"-->
+<!--            app:bt_shape="@drawable/transition_background_drawable_default"-->
+<!--            app:bt_title="Orders"-->
+<!--            app:bt_padding="10dp"-->
+<!--            app:bt_titlePadding="10dp" />-->
 
-        <com.gauravk.bubblenavigation.BubbleToggleView
-            android:id="@+id/c_item_wishlist"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:bt_colorActive="@color/register_bk_color"
-            app:bt_colorInactive="#808080"
-            app:bt_icon="@drawable/ic_wishlist"
-            app:bt_shape="@drawable/transition_background_drawable_default"
-            app:bt_title="Wish List"
-            app:bt_padding="10dp"
-            app:bt_titlePadding="10dp" />
+<!--        <com.gauravk.bubblenavigation.BubbleToggleView-->
+<!--            android:id="@+id/c_item_wishlist"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:bt_colorActive="@color/register_bk_color"-->
+<!--            app:bt_colorInactive="#808080"-->
+<!--            app:bt_icon="@drawable/ic_wishlist"-->
+<!--            app:bt_shape="@drawable/transition_background_drawable_default"-->
+<!--            app:bt_title="Wish List"-->
+<!--            app:bt_padding="10dp"-->
+<!--            app:bt_titlePadding="10dp" />-->
     </com.gauravk.bubblenavigation.BubbleNavigationConstraintView>
 
 <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->

@@ -2,19 +2,13 @@ package com.shoppers.shoppers.activities;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,8 +16,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.shoppers.shoppers.R;
-import com.shoppers.shoppers.adapters.RecycleViewCategoriesAdapter;
-import com.shoppers.shoppers.models.Category;
+import com.shoppers.shoppers.adapters.GridViewProductAdapter;
+import com.shoppers.shoppers.models.Product;
 import com.shoppers.shoppers.models.Subcategory;
 
 import org.json.JSONArray;
@@ -40,24 +34,25 @@ import utils.Constants;
 import utils.PreferenceUtils;
 import utils.Utilities;
 
-public class CategoryActivity extends AppCompatActivity {
+public class SubcategoryActivity extends AppCompatActivity {
 
     private static final String TAG = "CategoryActivity";
-    private ImageButton btnBack;
+    private GridView gridView;
     private TextView lblCategoryName;
-    private ListView listView;
+    private ImageButton btnBack;
+
     private String id;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category);
+        setContentView(R.layout.activity_subcategory);
 
         Utilities.changeStatusBarColor(getWindow(), getResources());
 
         this.btnBack = findViewById(R.id.btnBack);
-        this.listView = findViewById(R.id.lstSubcategoriesByCategory);
+        this.gridView = findViewById(R.id.lstProductsByCategory);
         this.lblCategoryName = findViewById(R.id.lblCategoryName);
 
         this.btnBack.setOnClickListener(new View.OnClickListener() {
@@ -70,11 +65,21 @@ public class CategoryActivity extends AppCompatActivity {
         this.lblCategoryName.setText(getIntent().getStringExtra("Category_name"));
         this.id = getIntent().getStringExtra("Category_id");
 
-        if(getIntent().getStringExtra("fromCatalog") == null) {
-            getAPIData();
-        } else {
+        getAPIData();
+    }
 
-        }
+    private ArrayList<Product> getProductList() {
+        ArrayList<Product> dummyProducts = new ArrayList<>();
+        dummyProducts.add(new Product("Product 1", String.valueOf(R.drawable.prod)));
+        dummyProducts.add(new Product("Product 2", String.valueOf(R.drawable.prod)));
+        dummyProducts.add(new Product("Product 3", String.valueOf(R.drawable.prod)));
+        dummyProducts.add(new Product("Product 4", String.valueOf(R.drawable.prod)));
+        dummyProducts.add(new Product("Product 5", String.valueOf(R.drawable.prod)));
+        dummyProducts.add(new Product("Product 6", String.valueOf(R.drawable.prod)));
+        dummyProducts.add(new Product("Product 7", String.valueOf(R.drawable.prod)));
+        dummyProducts.add(new Product("Product 8", String.valueOf(R.drawable.prod)));
+        dummyProducts.add(new Product("Product 9", String.valueOf(R.drawable.prod)));
+        return dummyProducts;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -84,14 +89,12 @@ public class CategoryActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    JSONObject categoriesData = response.getJSONObject("subcategoriesData");
+                    JSONObject categoriesData = response.getJSONObject("productsData");
                     JSONArray list = categoriesData.getJSONArray("list");
 
-                    ArrayList<Subcategory> subcategories = APIStrategy.getInstance().formatSubcategories(list);
-                    if(subcategories.size() > 0) {
-                        SubcategoryAdapter subcategoryAdapter = new SubcategoryAdapter(subcategories);
-                        listView.setAdapter(subcategoryAdapter);
-                        listView.setDivider(null);
+                    ArrayList<Product> products = APIStrategy.getInstance().formatProduct(list);
+                    if(products.size() > 0) {
+                        inflateGridView(products);
                         findViewById(R.id.data_not_found).setVisibility(View.INVISIBLE);
                     } else {
                         findViewById(R.id.data_not_found).setVisibility(View.VISIBLE);
@@ -110,7 +113,7 @@ public class CategoryActivity extends AppCompatActivity {
             }
         };
 
-        String url = getString(R.string.base_url) + "/products/category/" + this.id;
+        String url = getString(R.string.base_url) + "/products/subcategory/" + this.id;
 
         Map<String, String> headerParams = new HashMap<String, String>();
         headerParams.put("auth-token", PreferenceUtils.getInstance(getApplicationContext()).getValue(Constants.API_TOKEN_NAME));
@@ -129,43 +132,8 @@ public class CategoryActivity extends AppCompatActivity {
         }
     }
 
-    private class SubcategoryAdapter extends BaseAdapter {
-
-        private ArrayList<Subcategory> subcategories;
-
-        public SubcategoryAdapter(ArrayList<Subcategory> subcategories) {
-            this.subcategories = subcategories;
-        }
-        @Override
-        public int getCount() {
-            return this.subcategories.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            View listItemLayout = getLayoutInflater().inflate(R.layout.layout_subcategory, null);
-            TextView lblSubcategory = listItemLayout.findViewById(R.id.lblSubcategory);
-            lblSubcategory.setText(this.subcategories.get(position).getName());
-            listItemLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent subcategoryIntent = new Intent(getApplicationContext(), SubcategoryActivity.class);
-                    subcategoryIntent.putExtra("Category_id", subcategories.get(position).getId());
-                    subcategoryIntent.putExtra("Category_name", subcategories.get(position).getName());
-                    startActivity(subcategoryIntent);
-                }
-            });
-            return listItemLayout;
-        }
+    private void inflateGridView(ArrayList<Product> products) {
+        GridViewProductAdapter adapter = new GridViewProductAdapter(products, this);
+        this.gridView.setAdapter(adapter);
     }
 }
