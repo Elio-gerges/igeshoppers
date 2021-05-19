@@ -134,8 +134,8 @@ public class BuyActivity extends AppCompatActivity {
         JSONObject address = new JSONObject();
 
         requestBody.put("paid", true);
-        address.put("long", "");
-        address.put("lat", "");
+        address.put("long", "33.58776354248567");
+        address.put("lat", "35.40327249442906");
         address.put("Street", this.txtStreet.getText().toString());
         address.put("building", this.txtBuilding.getText().toString());
         address.put("city", this.txtCity.getText().toString());
